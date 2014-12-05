@@ -41,12 +41,6 @@
                 document.onkeypress = function (evt) {
                 typing.keyHandler(evt);
                 };
-                
-                function makeSound()
-                {
-                    var a = document.getElementById('aud');
-                    a.play();
-                }
         </script>
 
     </body>

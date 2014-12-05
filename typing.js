@@ -145,6 +145,20 @@ var Typing = {
     
     getWordPerMinute : function ()
     {
+        var typed_words = this.charsTyped / 5;
+        var uncorrectedErrors = this.totalIncorrect;
+        if(typed_words < uncorrectedErrors)
+        {
+            return 0;
+        }
+        var wpm = (typed_words - uncorrectedErrors) / this.getTime();
+        return wpm;       
+    },
+    
+    getWordPerMinuteRaw : function()
+    {
+        var typed_words = this.charsTyped / 5;
+        return typed_words / this.getTime();
         
     },
     
@@ -156,7 +170,9 @@ var Typing = {
         result += "Total Chars Typed: "+this.charsTyped+"<br/>";
         result += "Total Correct: "+this.totalCorrect+"<br/>";
         result += "Total Errors: "+this.totalIncorrect+"<br/>";
-        result += "Time Taken: "+this.getTime()+ " Minute(s)";
+        result += "Time Taken: "+this.getTime()+ " Minute(s)<br/>";
+        result += "Word Per Minute (Productive) : "+this.getWordPerMinute()+ " W/M<br/>";
+        result += "Word Per Minute (Raw) : "+this.getWordPerMinuteRaw()+ " W/M";
         div.innerHTML = result;
     }
 
